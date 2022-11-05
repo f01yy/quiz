@@ -14,12 +14,11 @@
       </div>
       <div class="answers">
         <div
-          v-for="(answer, idx) of questions[currentQuestionIndex].answers"
+          v-for="answer of questions[currentQuestionIndex].answers"
           :key="answer.text"
           @click="handleClick(answer)"
           class="answers__item"
         >
-          <span class="answer-number">{{ idx + 1 }}.</span>
           {{ answer.text }}
         </div>
       </div>
@@ -88,9 +87,6 @@ body {
 .question-number {
   font-size: 24px;
   color: rgb(85, 255, 215);
-}
-.answer-number {
-  color: rgb(4, 4, 45);
 }
 .question {
   max-width: 1270px;
