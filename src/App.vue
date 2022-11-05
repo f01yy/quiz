@@ -12,11 +12,11 @@
           :alt="questions[currentQuestionIndex].id"
         />
       </div>
-      <div class="answers">
+      <div class="answers" ref="answers">
         <div
-          v-for="answer of questions[currentQuestionIndex].answers"
+          v-for="(answer, idx) in questions[currentQuestionIndex].answers"
           :key="answer.text"
-          @click="handleClick(answer)"
+          @click="handleClick(answer, idx)"
           class="answers__item"
         >
           {{ answer.text }}
@@ -45,18 +45,27 @@ export default {
   },
 
   methods: {
-    handleClick(answer) {
-      if (answer.correct) {
-        this.score += 1;
-      } else {
-        console.log();
-      }
+    handleClick(answer, idx) {
+      setTimeout(() => {
+        if (answer.correct) {
+          this.$refs.answers.querySelector(
+            `div:nth-child(${idx + 1})`
+          ).style.backgroundColor = '#34eb52';
+          this.score += 1;
+        } else {
+          this.$refs.answers.querySelector(
+            `div:nth-child(${idx + 1})`
+          ).style.backgroundColor = '#eb4034';
+        }
+      }, 300);
 
-      if (this.currentQuestionIndex === this.questions.length - 1) {
-        console.log();
-      } else {
-        this.currentQuestionIndex += 1;
-      }
+      setTimeout(() => {
+        if (this.currentQuestionIndex === this.questions.length - 1) {
+          console.log('END');
+        } else {
+          this.currentQuestionIndex += 1;
+        }
+      }, 600);
     },
   },
 
