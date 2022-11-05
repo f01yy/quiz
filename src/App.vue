@@ -1,8 +1,10 @@
 <template>
   <div class="App">
     <h1 class="title">
-      <span class="question-number">№{{ currentQuestionIndex + 1 }}.</span> Из
-      какого фильма кадр?
+      <span v-if="currentQuestionIndex >= 0" class="question-number"
+        >№{{ currentQuestionIndex + 1 }}.</span
+      >
+      Из какого фильма кадр?
     </h1>
     <div class="score">Ваш счет: {{ score }}</div>
     <div class="question" v-if="questions[currentQuestionIndex]">
