@@ -25,7 +25,7 @@
         </div>
       </div>
     </div>
-    <div v-else>Конец</div>
+    <div v-else :style="{ textAlign: 'center' }">Конец</div>
   </div>
 </template>
 
