@@ -23,6 +23,7 @@
         </div>
       </div>
     </div>
+    <div v-else>Конец</div>
   </div>
 </template>
 
@@ -46,26 +47,24 @@ export default {
 
   methods: {
     handleClick(answer, idx) {
-      setTimeout(() => {
-        if (answer.correct) {
-          this.$refs.answers.querySelector(
-            `div:nth-child(${idx + 1})`
-          ).style.backgroundColor = '#34eb52';
-          this.score += 1;
-        } else {
-          this.$refs.answers.querySelector(
-            `div:nth-child(${idx + 1})`
-          ).style.backgroundColor = '#eb4034';
-        }
-      }, 300);
+      if (answer.correct) {
+        this.$refs.answers.querySelector(
+          `div:nth-child(${idx + 1})`
+        ).style.backgroundColor = '#34eb52';
+        this.score += 1;
+      } else {
+        this.$refs.answers.querySelector(
+          `div:nth-child(${idx + 1})`
+        ).style.backgroundColor = '#eb4034';
+      }
 
       setTimeout(() => {
         if (this.currentQuestionIndex === this.questions.length - 1) {
-          console.log('END');
+          this.currentQuestionIndex = -1;
         } else {
           this.currentQuestionIndex += 1;
         }
-      }, 600);
+      }, 800);
     },
   },
 
