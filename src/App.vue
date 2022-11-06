@@ -23,7 +23,7 @@
 
 <script>
 // 1. Разбить на компоненты [+]
-// 2. Подсвечивать правильный ответ в случае выбора неправильного []
+// 2. Подсвечивать правильный ответ в случае выбора неправильного [+]
 // 3 (опционно). Добавить стартовый экран []
 
 import { fetchQuestions } from './api.js';
@@ -59,9 +59,19 @@ export default {
         ).style.backgroundColor = '#129625';
         this.score += 1;
       } else {
+        const correctAnswerIndex = this.questions[
+          this.currentQuestionIndex
+        ].answers.findIndex((element) => element.correct);
+
         answerRefs.querySelector(
           `div:nth-child(${idx + 1})`
         ).style.backgroundColor = '#a32121';
+
+        setTimeout(() => {
+          answerRefs.querySelector(
+            `div:nth-child(${correctAnswerIndex + 1})`
+          ).style.backgroundColor = '#129625';
+        }, 1000);
       }
 
       setTimeout(() => {
@@ -70,7 +80,7 @@ export default {
         } else {
           this.currentQuestionIndex += 1;
         }
-      }, 800);
+      }, 2000);
     },
 
     handleRestart() {
