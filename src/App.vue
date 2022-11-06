@@ -71,7 +71,7 @@ export default {
           answerRefs.querySelector(
             `div:nth-child(${correctAnswerIndex + 1})`
           ).style.backgroundColor = '#129625';
-        }, 1000);
+        }, 800);
       }
 
       setTimeout(() => {
@@ -80,7 +80,7 @@ export default {
         } else {
           this.currentQuestionIndex += 1;
         }
-      }, 2000);
+      }, 1600);
     },
 
     handleRestart() {
