@@ -1,23 +1,26 @@
 <template>
   <div class="App">
-    <h1 class="title">
-      <span v-if="currentQuestionIndex >= 0" class="question-number"
-        >№{{ currentQuestionIndex + 1 }}.</span
-      >
-      Из какого фильма кадр?
-    </h1>
-    <app-question
-      v-if="questions[currentQuestionIndex]"
-      @answer-clicked="handleAnswerClicked"
-      :question="questions[currentQuestionIndex]"
-    />
+    <div class="container">
+      <h1 class="title">
+        <span v-if="currentQuestionIndex >= 0" class="question-number"
+          >№{{ currentQuestionIndex + 1 }}.</span
+        >
+        Из какого фильма кадр?
+      </h1>
 
-    <app-score
-      @restart="handleRestart"
-      v-else
-      :score="score"
-      :questionsLength="questions.length"
-    />
+      <app-question
+        v-if="questions[currentQuestionIndex]"
+        @answer-clicked="handleAnswerClicked"
+        :question="questions[currentQuestionIndex]"
+      />
+
+      <app-score
+        @restart="handleRestart"
+        v-else
+        :score="score"
+        :questionsLength="questions.length"
+      />
+    </div>
   </div>
 </template>
 
@@ -107,12 +110,19 @@ body {
 .App {
   padding: 0 20px;
 }
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .question-number {
   font-size: 24px;
   color: rgb(85, 255, 215);
 }
 .title {
   font-size: 28px;
-  text-align: center;
 }
 </style>

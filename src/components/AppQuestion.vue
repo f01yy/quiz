@@ -43,7 +43,7 @@ export default {
 
 <style scoped>
 .question {
-  max-width: 1270px;
+  width: 100%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -51,23 +51,26 @@ export default {
   gap: 20px;
 }
 .img-wrapper {
-  height: 450px;
-  object-fit: contain;
+  width: 100%;
+  max-width: 800px;
 }
 .img-wrapper img {
   width: 100%;
   height: 100%;
+  object-fit: contain;
 }
 .answers {
-  gap: 5px;
-  display: grid;
   width: 100%;
+  margin-bottom: 20px;
+  display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
+  gap: 10px;
 }
 .answers__item {
+  flex-grow: 1;
   background-color: blueviolet;
-  padding: 20px;
+  padding: 10px;
   font-size: 22px;
   cursor: pointer;
 }
