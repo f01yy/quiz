@@ -6,7 +6,6 @@
       >
       Из какого фильма кадр?
     </h1>
-    <div class="score">Ваш счет: {{ score }}</div>
     <div class="question" v-if="questions[currentQuestionIndex]">
       <div class="img-wrapper">
         <img
@@ -25,7 +24,10 @@
         </div>
       </div>
     </div>
-    <div v-else :style="{ textAlign: 'center' }">Конец</div>
+    <div v-else :style="{ textAlign: 'center' }" class="score">
+      <div class="score__text">Итого: {{ score }}</div>
+      <button class="score__button" @click="restartQuiz">Пройти заново</button>
+    </div>
   </div>
 </template>
 
@@ -52,12 +54,12 @@ export default {
       if (answer.correct) {
         this.$refs.answers.querySelector(
           `div:nth-child(${idx + 1})`
-        ).style.backgroundColor = '#34eb52';
+        ).style.backgroundColor = '#078219';
         this.score += 1;
       } else {
         this.$refs.answers.querySelector(
           `div:nth-child(${idx + 1})`
-        ).style.backgroundColor = '#eb4034';
+        ).style.backgroundColor = '#820f07';
       }
 
       setTimeout(() => {
@@ -67,6 +69,11 @@ export default {
           this.currentQuestionIndex += 1;
         }
       }, 800);
+    },
+
+    restartQuiz() {
+      this.currentQuestionIndex = 0;
+      this.score = 0;
     },
   },
 
@@ -89,10 +96,42 @@ body {
   padding: 0 20px;
 }
 .score {
-  font-size: 20px;
   position: fixed;
-  left: 20px;
-  top: 20px;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  padding: 20px;
+  border-radius: 13px;
+  font-weight: 700;
+  background-color: aliceblue;
+  margin: 0 auto;
+  width: 300px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.score__text {
+  font-size: 26px;
+  color: rgb(20, 20, 20);
+}
+.score__button {
+  background-color: transparent;
+  height: 30px;
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: 2px solid rgb(20, 20, 20);
+  padding: 15px 10px;
+  transition: all 0.2s;
+  border-radius: 10px;
+}
+.score__button:hover {
+  color: aliceblue;
+  background-color: rgb(20, 20, 20);
 }
 .question-number {
   font-size: 24px;
