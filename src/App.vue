@@ -25,7 +25,7 @@
       </div>
     </div>
     <div v-else :style="{ textAlign: 'center' }" class="score">
-      <div class="score__text">Итого: {{ score }}</div>
+      <div class="score__text">Итого: {{ score }}/{{ questions.length }}</div>
       <button class="score__button" @click="restartQuiz">Пройти заново</button>
     </div>
   </div>
