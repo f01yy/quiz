@@ -54,12 +54,12 @@ export default {
       if (answer.correct) {
         this.$refs.answers.querySelector(
           `div:nth-child(${idx + 1})`
-        ).style.backgroundColor = '#078219';
+        ).style.backgroundColor = '#129625';
         this.score += 1;
       } else {
         this.$refs.answers.querySelector(
           `div:nth-child(${idx + 1})`
-        ).style.backgroundColor = '#820f07';
+        ).style.backgroundColor = '#a32121';
       }
 
       setTimeout(() => {
