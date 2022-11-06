@@ -44,6 +44,7 @@ export default {
 <style scoped>
 .question {
   width: 100%;
+  height: auto;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -52,7 +53,9 @@ export default {
 }
 .img-wrapper {
   width: 100%;
+  overflow: hidden;
   max-width: 800px;
+  max-height: 450px;
 }
 .img-wrapper img {
   width: 100%;
