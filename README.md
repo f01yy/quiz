@@ -1,5 +1,7 @@
 # quiz
 
+Vue 3 project
+
 ## Project setup
 ```
 npm install
